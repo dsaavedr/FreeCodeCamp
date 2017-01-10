@@ -12,7 +12,7 @@ function assignPossition(position) {
     lat:position.coords.latitude,
     long:position.coords.longitude
   };
-  $(".info").html("Latitude: " + coords.lat);
+  $(".info").html("Latitude: " + coords.lat + "<br>" + "Longitude: " + coords.long);
 }
 
 $(document).ready(function(){
