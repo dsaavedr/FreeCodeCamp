@@ -16,18 +16,26 @@ function assignPossition(position) {
     long:position.coords.longitude
   };
   $(".info").html("Latitude: " + coords.lat + "<br>" + "Longitude: " + coords.long);
-  $.getJSON('https://api.darksky.net/forecast/' + key + "/" + coords.lat + "," + coords.long, function(data) {
-    var items = [],
-                $ul;
-
-            $.each(data, function (key, val) {
-                //iterate through the returned data and build a list
-                items.push('<li id="' + key + '"><span class="name">' + val.entityname + '</span><br><span class="addr">' + val.principaladdress1 + '</span> <span class="city">' + val.principalcity + '</span></li>');
-            });
-            $ul = $('<ul />').appendTo('.info');
-
-                    //append list items to list
-                    $ul.append(items);
+  // $.getJSON('https://api.darksky.net/forecast/' + key + "/" + coords.lat + "," + coords.long, function(data) {
+  //   var items = [],
+  //               $ul;
+  //
+  //           $.each(data, function (key, val) {
+  //               //iterate through the returned data and build a list
+  //               items.push('<li id="' + key + '"><span class="name">' + val.entityname + '</span><br><span class="addr">' + val.principaladdress1 + '</span> <span class="city">' + val.principalcity + '</span></li>');
+  //           });
+  //           $ul = $('<ul />').appendTo('.info');
+  //
+  //                   //append list items to list
+  //                   $ul.append(items);
+  // });
+  $.ajax({
+    url: "https://api.forecast.io/forecast/" + key + "/" + coords.lat + "," + coords.long,
+    dataType: "jsonp",
+    success: function (data) {
+        console.log('here');
+        console.log(data);
+    }
   });
 }
 
