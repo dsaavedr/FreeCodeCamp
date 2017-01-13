@@ -47,6 +47,10 @@ i.wi-rain {
   color: rgba(0,150,200,1);
 }
 
+#c-icon {
+  margin-top: 40px;
+}
+
 .icon {
   text-shadow: none;
   font-size: 35px;
