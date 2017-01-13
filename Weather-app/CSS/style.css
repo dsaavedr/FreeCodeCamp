@@ -5,9 +5,10 @@
 }
 
 body {
-  font-family: Maitree, sans-serif;
+  /*font-family: Maitree, sans-serif;*/
+  font-family: sans-serif;
   font-size: 30px;
-  background-image: radial-gradient(circle,rgba(50,50,50,.8),rgba(100,100,100,.7));
+  /*background-image: radial-gradient(circle,rgba(50,50,50,.8),rgba(100,100,100,.7));*/
   background-repeat: no-repeat;
   height: 100vh;
   /*text-shadow: 0 0 2px grey;*/
@@ -19,9 +20,13 @@ h1 {
   font-weight: 600;
 }
 
-a:link, a:hover {
+hr {
+  margin: 20px 150px;
+}
+
+a:link, .temp a:hover {
   text-decoration: none;
-  text-shadow: 0 1px 2px black;
+  /*text-shadow: 0 1px 2px black;*/
 }
 
 i {
@@ -48,11 +53,11 @@ i.wi-rain {
 }
 
 #c-icon {
-  margin-top: 40px;
+  margin-top: 80px;
+  text-shadow: 0 0 15px grey;
 }
 
 .icon {
-  text-shadow: none;
   font-size: 35px;
 }
 
