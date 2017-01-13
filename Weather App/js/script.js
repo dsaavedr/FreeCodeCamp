@@ -1,5 +1,11 @@
 var key = "234b6aedce614c99b89175711498ee6b"
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 
+bodyAppend = function(string) {
+  $("body").append(string);
+}
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -32,22 +38,28 @@ function assignPossition(position) {
     url: "https://api.forecast.io/forecast/" + key + "/" + coords.lat + "," + coords.long,
     dataType: "jsonp",
     success: function (data) {
-        // console.log('here');
+
         console.log(data);
-        var icon=data.currently.icon
+
+        var icon=data.currently.icon;
+        var zone=data.timezone;
+        var fcast=data.hourly.summary;
+        var temp=data.currently.temperature;
+        var temps=temp.toString();
+        var tu="F";
 
         console.log(icon=="partly-cloudy-night");
 
-        $("#c-icon").removeClass();
+        // $("#c-icon").removeClass();
 
         if (icon=="clear-day") {
-          $("#c-icon").addClass("wi wi-day-sunny");
+          $("#c-icon").addClass("wi wi-day-sunny sunny");
         } else if (icon=="clear-night") {
-          $("#c-icon").addClass("wi wi-night-clear");
+          $("#c-icon").addClass("wi wi-night-clear night");
         } else if (icon=="partly-cloudy-day") {
           $("#c-icon").addClass("wi wi-day-cloudy");
         } else if (icon=="partly-cloudy-night") {
-          $("#c-icon").addClass("wi wi-night-cloudy");
+          $("#c-icon").addClass("wi wi-night-cloudy night");
         } else if (icon=="cloudy") {
           $("#c-icon").addClass("wi wi-cloudy");
         } else if (icon=="rain") {
@@ -62,7 +74,24 @@ function assignPossition(position) {
           $("#c-icon").addClass("wi wi-fog");
         }
 
-        $("body").append("<div>Hello</div>" + icon);
+        icon=icon.split("-").join(" ").capitalizeFirstLetter();
+
+        bodyAppend("<div class='icon text-primary text-center'>" + icon + "</div>");
+        bodyAppend("<div class='text-center'>" + zone + "</div>");
+        bodyAppend("<div class='text-center temp'><span>" + temps + "</span> <a id='degrees' class='text-primary' href='#'>°" + tu + "</a></div>");
+        bodyAppend("<div class='container'><div class='well text-center'><b>Forecast: </b>" + fcast + "</div></div>");
+
+        $("#degrees").click(function() {
+          if ($(".temp a")[0].innerText=="°F") {
+            var x=(temp-32)/1.8;
+            x=Math.round(x*100)/100;
+            $(".temp span")[0].innerHTML=x;
+            $(".temp a")[0].innerText="°C";
+          } else {
+            $(".temp span")[0].innerHTML=temps;
+            $(".temp a")[0].innerText="°F";
+          }
+        });
     }
   });
 }
