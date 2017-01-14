@@ -48,8 +48,6 @@ function assignPossition(position) {
         var temps=temp.toString();
         var tu="F";
 
-        console.log(icon=="partly-cloudy-night");
-
         // $("#c-icon").removeClass();
 
         if (icon=="clear-day") {

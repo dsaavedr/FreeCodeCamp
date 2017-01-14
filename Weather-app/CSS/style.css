@@ -41,7 +41,6 @@ i {
   font-size: 16vw;
   display: block;
   text-align: center;
-  text-shadow: 0 2px 10px white;
 }
 
 i.sunny {
@@ -62,7 +61,7 @@ i.wi-rain {
 
 #c-icon {
   margin: 50px 0;
-  text-shadow: 0 0 15px grey;
+  text-shadow: 5px 5px 15px grey;
 }
 
 .icon {
