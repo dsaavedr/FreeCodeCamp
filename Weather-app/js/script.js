@@ -21,19 +21,7 @@ function assignPossition(position) {
     lat:position.coords.latitude,
     long:position.coords.longitude
   };
-  // $.getJSON('https://api.darksky.net/forecast/' + key + "/" + coords.lat + "," + coords.long, function(data) {
-  //   var items = [],
-  //               $ul;
-  //
-  //           $.each(data, function (key, val) {
-  //               //iterate through the returned data and build a list
-  //               items.push('<li id="' + key + '"><span class="name">' + val.entityname + '</span><br><span class="addr">' + val.principaladdress1 + '</span> <span class="city">' + val.principalcity + '</span></li>');
-  //           });
-  //           $ul = $('<ul />').appendTo('.info');
-  //
-  //                   //append list items to list
-  //                   $ul.append(items);
-  // });
+  
   $.ajax({
     url: "https://api.forecast.io/forecast/" + key + "/" + coords.lat + "," + coords.long,
     dataType: "jsonp",
@@ -48,7 +36,6 @@ function assignPossition(position) {
         var temps=temp.toString();
         var tu="F";
 
-        // $("#c-icon").removeClass();
 
         if (icon=="clear-day") {
           $("#c-icon").addClass("wi wi-day-sunny sunny");
@@ -95,7 +82,6 @@ function assignPossition(position) {
 }
 
 $(document).ready(function(){
-  // $(".info").html("Hello");
   getLocation();
 });
 
