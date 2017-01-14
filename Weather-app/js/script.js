@@ -4,7 +4,7 @@ String.prototype.capitalizeFirstLetter = function() {
 }
 
 bodyAppend = function(string) {
-  $(".main-content").append(string);
+  $(".row .info").append(string);
 }
 
 function getLocation() {
