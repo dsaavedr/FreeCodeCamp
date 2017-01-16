@@ -92,3 +92,11 @@ footer.footer {
   padding-right: 15px;
   padding-left: 30px;
 }
+
+.footer > .container p {
+  display: inline-block;
+}
+
+p.foot-p + p.foot-p {
+  float: right;
+}
