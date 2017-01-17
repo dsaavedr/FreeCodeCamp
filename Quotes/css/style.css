@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: rgba(0,0,0,.6);
+  font-family: Maitree, serif;
+  height: 100vh;
+  background: grey; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(rgba(0,0,0,.1), rgba(0,0,0,.6)); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(rgba(0,0,0,.1), rgba(0,0,0,.6)); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(rgba(0,0,0,.1), rgba(0,0,0,.6)); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(rgba(0,0,0,.1), rgba(0,0,0,.6)); /* Standard syntax */
+}
+
+.quote-row {
+  margin-top: 250px;
+}
+
+.quote-div {
+  padding: 20px;
+}
+
+.quote-btn {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.credit {
+  margin-left: -15px;
+}
+
+.by {
+  margin-right: -50px;
+}
