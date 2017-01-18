@@ -3,12 +3,24 @@
 }
 
 html {
-  min-width: 100vh;
+  min-height: 100vh;
 }
 
 body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+}
+
+.mobile {
+  background: red;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  resize: both;
+  overflow: auto;
 }
 
 #random {
