@@ -12,6 +12,8 @@ search = function() {
 
       result = data.query.pages;
 
+      $("#temp").removeClass("mobile");
+
       for (var i in result) {
         $("<a target='_blank' href='https://en.wikipedia.org/wiki/" + result[i].title.split(" ").join("_") +
         "'><div class='item col-lg-3'>" +
@@ -22,7 +24,6 @@ search = function() {
       }
     }
   });
-
 }
 
 $(document).ready(function() {
