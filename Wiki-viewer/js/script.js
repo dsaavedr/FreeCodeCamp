@@ -12,16 +12,6 @@ search = function() {
 
       result = data.query.pages;
 
-      // $(".mobile").css({
-      //   'height': '',
-      //   'margin': '',
-      //   'display':'',
-      //   'justify-content': '',
-      //   'align-items': '',
-      //   'resize': '',
-      //   'overflow': ''
-      // });
-
       $(".mobile").addClass(" mobile-moved");
       // $(".mobile h1").css("margin-top","10px");
 
