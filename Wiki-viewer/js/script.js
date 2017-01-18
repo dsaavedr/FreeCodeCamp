@@ -12,7 +12,18 @@ search = function() {
 
       result = data.query.pages;
 
-      $("#temp").removeClass("mobile");
+      // $(".mobile").css({
+      //   'height': '',
+      //   'margin': '',
+      //   'display':'',
+      //   'justify-content': '',
+      //   'align-items': '',
+      //   'resize': '',
+      //   'overflow': ''
+      // });
+
+      $(".mobile").addClass(" mobile-moved");
+      // $(".mobile h1").css("margin-top","10px");
 
       for (var i in result) {
         $("<a target='_blank' href='https://en.wikipedia.org/wiki/" + result[i].title.split(" ").join("_") +

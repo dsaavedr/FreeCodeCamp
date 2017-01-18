@@ -21,6 +21,14 @@ body {
   align-items: center;
   resize: both;
   overflow: auto;
+  -webkit-transition: height 1s ease-out; /* Safari */
+  -moz-transition: height 1s ease-out;
+  -o-transition: height 1s ease-out;
+  transition: height 1s ease-out;
+}
+
+.mobile-moved {
+  height: 150px;
 }
 
 .mobile h1 {
