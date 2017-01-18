@@ -1,5 +1,75 @@
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <style media="screen">
+      * {
+        box-sizing: border-box;
+      }
 
-<meta http-equiv="refresh" content="0; url=https://dsaavedr.github.io/FreeCodeCamp/Weather-app" />
+      html {
+        min-height: 100vh;
+        font-size: 30px;
+      }
 
-</head>
+      body {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        font-size: 30px;
+      }
+
+      div.container {
+        height: 100vh;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        resize: both;
+        overflow: auto;
+      }
+
+      .cont {
+        width: 300px;
+      }
+
+      .row div.top {
+        margin-top: 40px;
+      }
+
+      li {
+        color: grey;
+      }
+
+      li + li {
+        margin-top: 20px;
+      }
+
+      a:link, a:hover {
+        text-decoration: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cont">
+        <div class="row">
+          <!-- <div class="col-lg-12 text-center">
+            <a href="Weather-app"><button class="btn btn-default" type="button" name="button">Weather App</button></a>
+          </div>
+          <div class="col-lg-12 text-center top">
+            <a href="Quotes"><button class="btn btn-default" type="button" name="button">Random Quotes</button></a>
+          </div> -->
+          <ul>
+            <li><a href="Weather-app" title="App #1">Weather App</a></li>
+            <li><a href="Quotes" title="App #2">Random Quotes</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
