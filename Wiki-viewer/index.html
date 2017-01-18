@@ -9,11 +9,20 @@
   </head>
   <body>
     <h1 class="text-center">Wikipedia Viewer</h1>
-    <h2 class="text-center"><a href="http://wikipedia.org"><i class="fa fa-wikipedia-w"></i></a></h2>
 
-    <button type="button" name="button">Show me a random article</button><br>
+    <div class="text-center">
+      <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><button type="button" name="button" class="btn btn-default" id="random" data-toggle="tooltip" data-placement="right" title="Show me a random article!"><i class="fa fa-wikipedia-w"></i></button></a><br>
 
-    <input type="text" id="search" name="Search" value="Martin Luther King"><input type="submit" onclick="search()">
+      <div class="view">
+          <input type="text" id="search" name="Search" placeholder="Search for ..."><input class="btn" type="submit" onclick="search()">
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row content">
+
+      </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
