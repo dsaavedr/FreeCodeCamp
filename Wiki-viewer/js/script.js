@@ -17,7 +17,7 @@ search = function() {
 
       for (var i in result) {
         $("<a target='_blank' href='https://en.wikipedia.org/wiki/" + result[i].title.split(" ").join("_") +
-        "'><div class='item col-lg-3'>" +
+        "'><div class='item col-lg-3 col-md-4 col-sm-6 col-xs-6'>" +
         "<h3>" + result[i].title + "</h3>" +
         "<p>" + result[i].extract +
         "</div></a>")
