@@ -2,7 +2,7 @@ var url = "https://wind-bow.gomix.me/twitch-api/"
 
 $(document).ready(function() {
   $.ajax({
-    url: url + 'streams/freecodecamp',
+    url: url + 'streams/MedryBW',
     dataType: 'jsonp',
     success: function (data) {
 
@@ -17,11 +17,11 @@ $(document).ready(function() {
           dataType: "jsonp",
           success: function(data) {
             console.log(data);
-            window.channel = data
+            window.channel = data;
           }
         });
       } else {
-
+        window.channel = data.stream.channel;
       }
 
     }
