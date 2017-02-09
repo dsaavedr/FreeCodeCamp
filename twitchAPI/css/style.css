@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 12px;
+  background: rgba(100,100,100,.05);
+}
+
+h2 {
+  font-size: 20px;
+  color: orange;
+  margin-top: 5px;
+}
+
+#content {
+  margin: 0 0 20px;
+}
+
+#content a, #content a:link, #content a:hover {
+  text-decoration: none;
+}
+
+.channel {
+  overflow: hidden;
+  margin: 20px auto 0;
+  padding: 0 10px 0 0;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px grey;
+  width: 650px;
+  background: white;
+}
+
+p + p {
+  margin-bottom: 0;
+}
+
+.channel.offline h2 {
+  color: grey;
+}
+
+.channel img {
+  float: left;
+  width: 100px;
+}

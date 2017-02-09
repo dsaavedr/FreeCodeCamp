@@ -71,7 +71,7 @@ addBox = function(k,d) {
   } else {
     c.innerHTML+=
     "<a href='#'><div class='channel offline'>" +
-      "<img src='http://placehold.it/300x300' alt=''>" +
+      "<img src='http://placehold.it/100x100' alt=''>" +
       "<h2 class='text-right'>" + d.message + "</h2>" +
       "<p class='text-right'><b>" + d.status + " " + d.error + "</b></p>" +
     "</div></a>";
