@@ -25,7 +25,11 @@ $(document).ready(function() {
                 data.status = "";
               }
 
-              addBox("c",data);
+              if (data.display_name!=undefined){
+                addBox("c",data);
+              } else {
+                addBox("z", data);
+              }
             }
 
           });
@@ -35,11 +39,10 @@ $(document).ready(function() {
             data.status = "";
           }
 
-          addBox("s",data.stream.channel);
+          addBox("s",data);
         }
 
-      }
-
+      },
     });
   }
 });
@@ -49,18 +52,28 @@ addBox = function(k,d) {
 
   if (k=="c") {
     c.innerHTML+=
-    "<a href='#'><div class='channel'>" +
+    "<a target='_blank' href='https://twitch.tv/" + d.display_name + "'><div class='channel offline'>" +
       "<img src='" + d.logo + "' alt=''>" +
       "<h2 class='text-right'>" + d.display_name + "</h2>" +
       "<p class='text-right'><b>" + d.status + "</b></p>" +
       "<p class='text-right'>Offline</p>" +
     "</div></a>";
-  } else {
+  } else if (k=="s") {
+    d1=d;
+    d=d.stream.channel;
     c.innerHTML+=
-    "<a href='#'><div class='channel'>" +
+    "<a target='_blank' href='https://twitch.tv/" + d.display_name + "'><div class='channel online'>" +
       "<img src='" + d.logo + "' alt=''>" +
       "<h2 class='text-right'>" + d.display_name + "</h2>" +
-      "<p class='text-right'><b>" + d.status + "</b></p>" +
+      "<p class='text-right'><b>" + d1.stream.game + "</b> -   Created at: " + d1.stream.created_at + "</p>" +
+      "<p class='text-right'>" + d.status + "</p>" +
+    "</div></a>";
+  } else {
+    c.innerHTML+=
+    "<a href='#'><div class='channel offline'>" +
+      "<img src='http://placehold.it/300x300' alt=''>" +
+      "<h2 class='text-right'>" + d.message + "</h2>" +
+      "<p class='text-right'><b>" + d.status + " " + d.error + "</b></p>" +
     "</div></a>";
   }
 }
