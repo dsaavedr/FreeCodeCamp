@@ -1,5 +1,5 @@
 var url = "https://wind-bow.gomix.me/twitch-api/"
-var channels = ["MedryBW", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"];
+var channels = ["MedryBW", "ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "brunofin"];
 var info = {};
 
 $(document).ready(function() {
@@ -20,12 +20,22 @@ $(document).ready(function() {
             dataType: "jsonp",
             success: function(data) {
               console.log(data);
-              addBox(data);
+
+              if (data.status===null) {
+                data.status = "";
+              }
+
+              addBox("c",data);
             }
 
           });
         } else {
-          addBox(data.stream.channel);
+
+          if (data.status===null) {
+            data.status = "";
+          }
+
+          addBox("s",data.stream.channel);
         }
 
       }
@@ -34,8 +44,23 @@ $(document).ready(function() {
   }
 });
 
-addBox = function(d) {
+addBox = function(k,d) {
   var c = $("#content")[0];
 
-  c.innerHTML+="<div class='channel'>hello</div>";
+  if (k=="c") {
+    c.innerHTML+=
+    "<a href='#'><div class='channel'>" +
+      "<img src='" + d.logo + "' alt=''>" +
+      "<h2 class='text-right'>" + d.display_name + "</h2>" +
+      "<p class='text-right'><b>" + d.status + "</b></p>" +
+      "<p class='text-right'>Offline</p>" +
+    "</div></a>";
+  } else {
+    c.innerHTML+=
+    "<a href='#'><div class='channel'>" +
+      "<img src='" + d.logo + "' alt=''>" +
+      "<h2 class='text-right'>" + d.display_name + "</h2>" +
+      "<p class='text-right'><b>" + d.status + "</b></p>" +
+    "</div></a>";
+  }
 }
