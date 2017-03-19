@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/webpack-dev-server --hot --inline"
+    "dev": "./node_modules/.bin/webpack-dev-server --hot --inline",
+    "wpug": "pug index.pug --watch --pretty"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
+    "pug": "^2.0.0-beta11",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "webpack": "^1.12.9",
