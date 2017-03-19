@@ -3,7 +3,7 @@ import React from 'react';
 export default class Btn extends React.Component {
   onclick (e) {
       // console.log(this);
-      // console.log(this.props.click[0]);
+      // console.log(this.props.click);
       this.props.click[0].bind(this)();
       this.props.click[1].bind(this)();
   }

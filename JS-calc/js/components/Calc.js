@@ -6,40 +6,45 @@ import Btn from './Button';
 
 var vals={
   currentN : [0],
-  secondN : [0]
+  firstN : [0],
+  secondN : [],
+  op : []
 };
 
 export default class Calc extends React.Component {
   updateScreen() {
     $("#screen")[0].innerHTML = "<p class='text-right'>" + parseFloat(vals.currentN.join("")) + "</p>";
     console.log(vals.currentN);
-    $("#screen")[0].innerHTML += "<p class='text-right'>" + vals.secondN.join("") + "</p>";
+    $("#screen")[0].innerHTML += "<p class='text-right'>" + parseFloat(vals.firstN.join("")) + vals.op + vals.secondN.join("") + "</p>";
     console.log($("#screen"));
   }
 
   useVal () {
     var num1 = vals.currentN;
     var num2 = vals.secondN;
+    var num3 = vals.firstN;
+    var op = vals.op;
 
     this.props.type == 'number' ? (
-      num1.push(this.props.value),
-      num2.push(this.props.value),
-      console.log(num1),
-      console.log(parseFloat(num1.join("")))
-    ) : (this.props.type == 'operator' ? (
-      vals.currentN = [0],
-      num2.push(this.props.value)
+      console.log('y')
     ) : (
-      console.log('nope')
-    ))
+      this.props.type == 'operator' ? (
+        console.log('y')
+      ) : (
+        this.props.type == 'specOperator' ? (
+          console.log('y')
+        ) : (
+          console.log('n')
+        )
+      )
+    )
   }
-
 
   render() {
     var par = this;
     var Buttons = [
       {val: "AC", type: 'specOperator'},
-      {val: "CE", type: 'specOoperator'},
+      {val: "CE", type: 'specOperator'},
       {val: "÷", type: 'operator'},
       {val: "x", type: 'operator'},
       {val: 7, type: 'number'},
@@ -56,7 +61,7 @@ export default class Calc extends React.Component {
       {val: "√", type: 'operator'},
       {val: 0, type: 'number'},
       {val: ".", type: 'number'},
-      {val: "=", type: 'operator'}
+      {val: "=", type: 'equal'}
     ].map((value, i) => <Btn key={i} click={[par.useVal, par.updateScreen.bind(this)]} value={value.val} type={value.type}/>);
 
     console.log(Buttons);
