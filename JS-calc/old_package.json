@@ -1,0 +1,39 @@
+{
+  "name": "jscalc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/webpack-dev-server --hot --inline",
+    "wpug": "pug index.pug --watch --pretty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsaavedr/JS-calc.git"
+  },
+  "author": "Daniel Saavedra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dsaavedr/JS-calc/issues"
+  },
+  "homepage": "https://github.com/dsaavedr/JS-calc#readme",
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "babel-plugin-transform-class-properties": "^6.3.13",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "pug": "^2.0.0-beta11",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.16.3"
+  }
+}
