@@ -1,0 +1,18 @@
+- var nums = [];
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Javascript Calculator
+  body
+    h1.text-center JS Calculator
+    #calculator
+      - for (let i = 9; i>=0; i--) {
+        - nums.push(i);
+      -}
+      each n in nums
+        button(value=n, type="button")= n
+    
+    script(src="./app.bundle.js")
+    script(src="./styles.bundle.js")
+    
