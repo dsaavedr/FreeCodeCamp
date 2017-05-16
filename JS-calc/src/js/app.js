@@ -1,3 +1,18 @@
 import evaluate from './assets/evaluate';
+import $ from 'jquery';
 
-evaluate(1,2,"div") == .5 && evaluate(1, 2, "-") == -1 && evaluate(1, 4, "root") == 2 ? console.log('works!') : console.log('error in evaluate.js');
+let title = $('h1');
+let calculator = $('#calculator')
+
+title.hide();
+calculator.hide();
+
+$(document).ready(() => {
+
+
+  evaluate(1,2,"div") == .5 && evaluate(1, 2, "-") == -1 ? $('h1')[0].innerHTML += " - API works!" : $('h1')[0].innerHTML += " - API broken"
+  title.fadeIn('slow');
+
+  calculator.show();
+
+});

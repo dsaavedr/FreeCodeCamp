@@ -3,16 +3,20 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
     title Javascript Calculator
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css", rel="stylesheet")
+    link(href="master.css", rel="stylesheet")
   body
     h1.text-center JS Calculator
     #calculator
       - for (let i = 9; i>=0; i--) {
         - nums.push(i);
       -}
+      - ["+", "-", "x", "div"].forEach((val) => {nums.push(val)})
       each n in nums
-        button(value=n, type="button")= n
+        button.btn.btn-default(value=n, type="button")= n
     
     script(src="./app.bundle.js")
-    script(src="./styles.bundle.js")
     

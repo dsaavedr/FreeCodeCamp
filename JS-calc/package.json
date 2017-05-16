@@ -8,8 +8,7 @@
     "deploy": "pug ./src/pug/index.pug -o ./dist&&set NODE_ENV=production&&webpack -p",
     "pug": "pug ./src/pug/index.pug -o ./dist -P",
     "build": "npm run pug & webpack",
-    "dev": "npm run pug & webpack --watch",
-    "watch": "webpack-dev-server --inline --hot"
+    "dev": "npm run pug & webpack-dev-server"
   },
   "author": "Daniel Saavedra",
   "license": "MIT",

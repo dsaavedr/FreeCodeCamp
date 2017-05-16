@@ -38,8 +38,8 @@ module.exports = {
     ]
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: path.resolve(__dirname, './src'),
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js'
   },
   plugins: [
