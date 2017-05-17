@@ -10,13 +10,16 @@ html(lang='en')
     link(href="master.css", rel="stylesheet")
   body
     h1.text-center JS Calculator
-    #calculator
-      - for (let i = 9; i>=0; i--) {
-        - nums.push(i);
-      -}
-      - ["+", "-", "x", "div"].forEach((val) => {nums.push(val)})
-      each n in nums
-        button.btn.btn-default(value=n, type="button")= n
+    #env.container-fluid
+      #calculator
+        #screen
+        #numpad
+          - for (let i = 9; i>=0; i--) {
+            - nums.push(i);
+          -}
+          - ["+", "-", "x", "div"].forEach((val) => {nums.push(val)})
+          each n in nums
+            button.btn.btn-default(value=n, type="button")= n
     
     script(src="./app.bundle.js")
     
