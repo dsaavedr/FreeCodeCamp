@@ -3,7 +3,7 @@
 const   debug = process.env.NODE_ENV !== 'production',
         extractTextPlugin = require('extract-text-webpack-plugin'),
             extractCSS = new extractTextPlugin({
-              filename: 'master.css',
+              filename: 'styles.bundle.css',
               disable: false,
               allChunks: true
             }),
@@ -12,6 +12,7 @@ const   debug = process.env.NODE_ENV !== 'production',
               disable: false,
               allChunks: true
             }),
+        HtmlWebpackPlugin = require('html-webpack-plugin'),
         path = require('path'),
         webpack = require('webpack');
 
@@ -19,7 +20,7 @@ const   debug = process.env.NODE_ENV !== 'production',
 
 // const CSS = new extractTextPlugin('./src/styles/master.sass')
 
-module.exports = {
+let config = module.exports = {
   context: path.resolve(__dirname, './src'),
   devtool: debug ? 'inline-sourcemap' : false,
   entry: {
@@ -44,11 +45,15 @@ module.exports = {
           use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
       },
+      // {
+      //   test: /\.pug$/,
+      //   use: extractPug.extract({
+      //     use: ['html-loader', 'pug-html-loader?' + (debug ? 'pretty' : '')]
+      //   })
+      // }
       {
         test: /\.pug$/,
-        use: extractPug.extract({
-          use: ['html-loader', 'pug-html-loader?pretty']
-        })
+        use: ['html-loader', 'pug-html-loader?' + (debug ? 'pretty' : '')],
       }
     ]
   },
@@ -58,7 +63,7 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, "dist"),
     compress: true,
     open: true
     // port: 9000,
@@ -66,18 +71,23 @@ module.exports = {
   },
   plugins: [
     extractCSS,
-    extractPug
+    // extractPug,
+    new HtmlWebpackPlugin({
+      title: 'Javascript Calculator',
+      hash: true,
+      template: './pug/index.pug'
+    })
   ]
 };
 
 (() => {
   if (!debug) {
-    module.exports.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
-    module.exports.plugins.push(
+    [
+      new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.optimize.UglifyJsPlugin({
         mangle: false,
         sourcemap: false
       })
-    );
+    ].forEach((item) => {config.push(item)});
   }
 })();
