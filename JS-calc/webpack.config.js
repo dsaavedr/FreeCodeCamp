@@ -4,21 +4,25 @@ const   debug = process.env.NODE_ENV !== 'production',
         extractTextPlugin = require('extract-text-webpack-plugin'),
             extractCSS = new extractTextPlugin({
               filename: 'styles.bundle.css',
-              disable: false,
+              disable: debug,
               allChunks: true
             }),
-            extractPug = new extractTextPlugin({
-              filename: 'index.html',
-              disable: false,
-              allChunks: true
-            }),
+            // extractPug = new extractTextPlugin({
+            //   filename: 'index.html',
+            //   disable: false,
+            //   allChunks: true
+            // }),
         HtmlWebpackPlugin = require('html-webpack-plugin'),
         path = require('path'),
         webpack = require('webpack');
 
-// Others
+const   prodCSS = extractCSS.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
+        }),
+        devCSS = ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        cssConfig = debug ? devCSS : prodCSS;
 
-// const CSS = new extractTextPlugin('./src/styles/master.sass')
 
 let config = module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -40,10 +44,7 @@ let config = module.exports = {
       },
       {
         test: /\.sass$/,
-        use: extractCSS.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'postcss-loader', 'sass-loader']
-        })
+        use: cssConfig
       },
       // {
       //   test: /\.pug$/,
@@ -65,7 +66,8 @@ let config = module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
     compress: true,
-    open: true
+    open: true,
+    hot: true
     // port: 9000,
     // stats: 'errors-only'
   },
@@ -76,11 +78,14 @@ let config = module.exports = {
       title: 'Javascript Calculator',
       hash: true,
       template: './pug/index.pug'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
   ]
 };
 
 (() => {
+  // Production plugins
   if (!debug) {
     [
       new webpack.optimize.OccurrenceOrderPlugin(),
@@ -88,6 +93,7 @@ let config = module.exports = {
         mangle: false,
         sourcemap: false
       })
-    ].forEach((item) => {config.push(item)});
+    ].forEach((item) => {config.plugins.push(item)});
+
   }
 })();
