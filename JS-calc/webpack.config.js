@@ -122,6 +122,9 @@ let config = module.exports = {
       new webpack.optimize.UglifyJsPlugin({
         mangle: false,
         sourcemap: false
+      }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
       })
     ].forEach((item) => {config.plugins.push(item)});
 
