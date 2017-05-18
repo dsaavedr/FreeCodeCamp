@@ -36,10 +36,7 @@ let config = module.exports = {
         test: /\.(js|jsx)$/,
         exclude: [/node_modules/],
         use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'react', 'stage-0']
-          }
+          loader: 'babel-loader'
         }],
       },
       {
