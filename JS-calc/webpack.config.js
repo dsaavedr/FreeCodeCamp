@@ -1,9 +1,11 @@
+const debug = process.env.NODE_ENV !== 'production';
+
 // Dependencies
 
-const   debug = process.env.NODE_ENV !== 'production',
+const   bootstrapEntryPoints = require('./webpack.bootstrap.config.js'),
         extractTextPlugin = require('extract-text-webpack-plugin'),
             extractCSS = new extractTextPlugin({
-              filename: 'styles.bundle.css',
+              filename: 'styles/[name].bundle.css',
               disable: debug,
               allChunks: true
             }),
@@ -21,7 +23,8 @@ const   prodCSS = extractCSS.extract({
           use: ['css-loader', 'postcss-loader', 'sass-loader']
         }),
         devCSS = ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-        cssConfig = debug ? devCSS : prodCSS;
+        cssConfig = debug ? devCSS : prodCSS,
+        bootstrapConfig = debug ? bootstrapEntryPoints.dev : bootstrapEntryPoints.prod;
 
 
 let config = module.exports = {
@@ -29,6 +32,7 @@ let config = module.exports = {
   devtool: debug ? 'inline-sourcemap' : false,
   entry: {
     app: ['./js/app.js', './styles/master.sass', './pug/index.pug'],
+    bootstrap: bootstrapConfig
   },
   module: {
     rules: [
@@ -60,13 +64,29 @@ let config = module.exports = {
       {
         test: /\.pug$/,
         use: ['html-loader', 'pug-html-loader?' + (debug ? 'pretty' : '')],
+      },
+      {
+        test: /\.(woff2?|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: 'fonts/[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(ttf|eot)$/,
+        use: 'file-loader?name=fonts/[name].[ext]'
       }
     ]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     // publicPath: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: 'js/[name].bundle.js'
   },
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
@@ -85,7 +105,12 @@ let config = module.exports = {
       template: './pug/index.pug'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      jquery: 'jquery'
+    })
   ]
 };
 
