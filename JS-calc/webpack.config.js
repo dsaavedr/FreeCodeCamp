@@ -20,7 +20,7 @@ const   bootstrapEntryPoints = require('./webpack.bootstrap.config.js'),
 
 const   prodCSS = extractCSS.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'postcss-loader', 'sass-loader']
+          use: ['css-loader?minimize', 'postcss-loader', 'sass-loader']
         }),
         devCSS = ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
         cssConfig = debug ? devCSS : prodCSS,
