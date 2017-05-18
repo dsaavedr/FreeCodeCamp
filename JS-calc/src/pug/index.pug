@@ -8,11 +8,17 @@ html(lang='en')
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css", rel="stylesheet")
     //- link(href="./styles.bundle.css", rel="stylesheet")
   body
+    
     include includes/header.pug
+    
     h1.text-center JS Calculator
+    
     #env.container-fluid
+      
       #calculator
+        
         #screen
+        
         #numpad
           - var nums = [];
           - for (let i = 9; i>=0; i--) {

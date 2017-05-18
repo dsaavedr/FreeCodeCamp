@@ -51,7 +51,15 @@ let config = module.exports = {
       //   use: extractPug.extract({
       //     use: ['html-loader', 'pug-html-loader?' + (debug ? 'pretty' : '')]
       //   })
-      // }
+      // },
+      {
+        test: /\.(png|svg|jpe?g|gif|avg)$/,
+        use: [
+          // 'file-loader?name=[name].[ext]&outputPath=images/&publicPath=images/', // Processing
+          'file-loader?name=images/[name].[ext]', // Optmizaton. If public and output paths are equal
+          'image-webpack-loader'
+        ]
+      },
       {
         test: /\.pug$/,
         use: ['html-loader', 'pug-html-loader?' + (debug ? 'pretty' : '')],
