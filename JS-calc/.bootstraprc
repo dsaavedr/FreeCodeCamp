@@ -9,10 +9,17 @@ bootstrapVersion: 3
 useCustomIconFontPath: false
 
 # Webpack loaders, order matters
-styleLoaders:
-  - style
-  - css
-  - sass
+env:
+  development:
+    styleLoaders:
+      - style-loader
+      - css-loader
+      - sass-loader
+  production:
+    styleLoaders:
+      - style-loader
+      - css-loader?minimize
+      - sass-loader
 
 # Extract styles to stand-alone css file
 # Different settings for different environments can be used,
