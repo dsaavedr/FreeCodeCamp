@@ -14,8 +14,10 @@ const   bootstrapEntryPoints = require('./webpack.bootstrap.config.js'),
             //   disable: false,
             //   allChunks: true
             // }),
+        glob = require('glob-all'),
         HtmlWebpackPlugin = require('html-webpack-plugin'),
         path = require('path'),
+        PurifyCSSPlugin = require('purifycss-webpack'),
         webpack = require('webpack');
 
 const   prodCSS = extractCSS.extract({
@@ -31,7 +33,7 @@ let config = module.exports = {
   context: path.resolve(__dirname, './src'),
   devtool: debug ? 'inline-sourcemap' : false,
   entry: {
-    app: ['./js/app.js', './styles/master.sass', './pug/index.pug'],
+    app: ['./js/index.js', './styles/master.sass', './pug/index.pug'],
     bootstrap: bootstrapConfig
   },
   module: {
@@ -104,6 +106,18 @@ let config = module.exports = {
       hash: true,
       template: './pug/index.pug'
     }),
+    // new PurifyCSSPlugin({
+    //   paths: glob.sync([
+    //     path.join(__dirname, 'src/pug/*.pug'),
+    //     path.join(__dirname, 'src/pug/includes/*.pug')
+    //   ]),
+    //   minimize: !debug,
+    //   purifyOptions: {
+    //     whitelist: ['*dropdown*'] // Dropdown didn't work without this option...
+    //   }
+    //   // styleExtensions: ['css', 'sass'],
+    //   // moduleExtensions: ['html', 'pug']
+    // }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.ProvidePlugin({

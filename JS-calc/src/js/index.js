@@ -1,6 +1,6 @@
 import evaluate from './assets/evaluate';
 import $ from 'jquery';
-import helloWorld from './assets/module2';
+import helloWorld from './assets/react-test.js';
 
 $(document).ready(() => {
 
