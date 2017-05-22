@@ -1,8 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { App, SecondApp } from './components/App.js';
 
-ReactDOM.render(
-  <App />,
+render(
+  <div>
+    <App />
+    <SecondApp />
+  </div>,
 document.getElementById('react-root')
 );

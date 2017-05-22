@@ -3,8 +3,8 @@ import React from 'react';
 export const App = () => {
   return (
     <div>
-      <h1 className="">Subtitle created with react</h1>
-      <p className="text-primary">Testing rendering with JSX</p>
+      <h2 className="text-center">Subtitle created with react</h2>
+      <p className="text-primary text-center">Testing rendering with JSX</p>
     </div>
   )
 };
