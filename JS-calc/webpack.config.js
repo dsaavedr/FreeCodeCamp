@@ -33,8 +33,8 @@ let config = module.exports = {
   context: path.resolve(__dirname, './src'),
   devtool: debug ? 'inline-sourcemap' : false,
   entry: {
-    app: ['./js/index.js', './styles/master.sass', './pug/index.pug'],
-    bootstrap: bootstrapConfig
+    bootstrap: bootstrapConfig,
+    app: ['./js/index.js', './styles/master.sass', './pug/index.pug']
   },
   module: {
     rules: [
@@ -104,7 +104,16 @@ let config = module.exports = {
     new HtmlWebpackPlugin({
       title: 'Javascript Calculator',
       hash: true,
-      template: './pug/index.pug'
+      template: './pug/index.pug',
+      chunksSortMode: (a, b) => {
+        if (a.names[0] > b.names[0]) {
+          return -1;
+        } else if (a.names[0] < b.names[0]) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     }),
     // new PurifyCSSPlugin({
     //   paths: glob.sync([
@@ -144,3 +153,17 @@ let config = module.exports = {
 
   }
 })();
+
+let orderByList = function(list) {
+    return function(chunk1, chunk2) {
+      let index1 = list.indexOf(chunk1.names[0]);
+      let index2 = list.indexOf(chunk2.names[0]);
+      if (index2 == -1 || index1 < index2) {
+        return -1;
+      }
+      if (index1 == -1 || index1 > index2) {
+        return 1;
+      }
+      return 0;
+    };
+  };
