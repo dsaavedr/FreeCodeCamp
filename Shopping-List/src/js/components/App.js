@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './Modal';
 
 export class App extends React.Component {
   constructor(props){
@@ -84,7 +85,8 @@ export class App extends React.Component {
                }
              </tbody>
            </table>
-           <button onClick={ () => this.clearList()} className="btn btn-default clear-list">Clear list</button>
+           <button data-toggle="modal" data-target="#myModal" className="btn btn-default clear-list">Clear list</button>
+           <Modal clearList={this.clearList.bind(this)}/>
          </div>
         </div>
     )
