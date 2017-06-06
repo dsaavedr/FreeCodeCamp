@@ -18,3 +18,47 @@ body
   background: #ECEBEC
   // background: linear-gradient(to right, #c2e59c, #64b3f4)
   // background: linear-gradient(to right, #eef2f3, #8e9eab)
+
+  .btn
+    outline: none
+    display: block
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+    &:active, &:active:focus, &:hover, &:focus, &:visited
+        @extend .btn
+
+  #react-root
+    display: flex
+    align-items: center
+    justify-content: center
+    min-height: 100vh
+
+    #calculator
+      background: rgba(170, 170, 170, 1)
+      height: 500px
+      width: 350px
+      display: flex
+      flex-direction: column
+      box-shadow: 0 2px 20px 0 rgba(170, 170, 170, 1)
+
+      #display
+        color: black
+        background: white
+        font-size: 40px
+        padding: 0 20px
+        text-align: right
+        flex: 1
+
+      #keypad
+        height: 70%
+        display: flex
+
+        #keys
+          width: 80%
+
+          #functions
+            display: flex
+
+          #numbers
+            @extend #functions
+            flex-direction: row
+            flex-wrap: wrap-reverse
