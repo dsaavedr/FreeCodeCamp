@@ -5,8 +5,8 @@ $btn-side: 50px
 
 html
   box-sizing: border-box
-  margin: none
-  padding: none
+  margin: 0
+  padding: 0
 
 h1, h2, h3, h4, h5, h6, p, div
   font-family: 'Roboto', sans-serif
@@ -36,46 +36,49 @@ body
 
     #calculator
       background: rgba(170, 170, 170, 1)
-      height: 500px
-      width: 350px
+      height: 600px
+      width: 390px
       display: flex
       flex-direction: column
       box-shadow: 0 2px 20px 0 rgba(170, 170, 170, 1)
 
       #display
         color: black
-        background: white
-        font-size: 40px
+        font-size: 80px
         padding: 0 20px
         text-align: right
         flex: 1
-        border: 1px solid black
-        border-collapse: collapse
+        box-shadow: 0 5px 10px
+        margin-bottom: 20px
 
       #keypad
-        height: 70%
+        height: 450px
         display: flex
-        border-collapse: collapse
+        box-shadow: 0 -5px 10px
+        // border: 1px solid black
 
         #keys
-          border: 1px solid black
+          display: flex
+
+          #inputs
+            display: flex
+            flex-direction: row
+            flex-wrap: wrap
 
           #functions, #numbers, #operators
             display: flex
-
-          #functions
+            flex-wrap: wrap
+            & > *
+              width: 90px
+              height: 90px
+              font-size: 2em
+              border-radius: 0
 
           #numbers
-            flex-direction: row
             flex-wrap: wrap-reverse
 
-          .key
-            width: $btn-side
-            height: $btn-side
-            text-align: center
-            font-size: 1.3em
-            border: 1px solid grey
-            border-radius: 0
+            .num-0
+              width: 180px
 
-            &.num-0
-              width: $btn-side*2
+          #operators
+            width: 90px
