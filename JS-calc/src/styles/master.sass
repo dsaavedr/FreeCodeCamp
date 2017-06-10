@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300')
 @import './bootstrap/customizations.scss'
 
+$btn-side: 50px
+
 html
   box-sizing: border-box
   margin: none
@@ -47,18 +49,33 @@ body
         padding: 0 20px
         text-align: right
         flex: 1
+        border: 1px solid black
+        border-collapse: collapse
 
       #keypad
         height: 70%
         display: flex
+        border-collapse: collapse
 
         #keys
-          width: 80%
+          border: 1px solid black
 
-          #functions
+          #functions, #numbers, #operators
             display: flex
 
+          #functions
+
           #numbers
-            @extend #functions
             flex-direction: row
             flex-wrap: wrap-reverse
+
+          .key
+            width: $btn-side
+            height: $btn-side
+            text-align: center
+            font-size: 1.3em
+            border: 1px solid grey
+            border-radius: 0
+
+            &.num-0
+              width: $btn-side*2
